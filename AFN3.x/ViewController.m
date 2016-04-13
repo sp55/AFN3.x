@@ -8,8 +8,10 @@
 
 #import "ViewController.h"
 #import "AFNetworking.h"
+#import "RequestManager.h"
 
 
+#define kTestUrl @"http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.artist.getList&format=json&order=1&limit=12&offset=0&area=0&sex=0&abc="
 @interface ViewController ()
 
 @end
@@ -19,6 +21,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    [RequestManager TestWithUrl:kTestUrl success:^(id resultData) {
+        NSLog(@"result->%@",resultData);
+    } failed:^(NSError *error) {
+        NSLog(@"error-->%@",error);
+    }];
+    
+    
+    
     
 //    [self afnGet];
 //    [self afnPost];
@@ -30,7 +41,7 @@
 //
 //    [self upLoad2];
     
-    [self AFNetworkStatus];
+//    [self AFNetworkStatus];
 }
 //get
 -(void)afnGet
