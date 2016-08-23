@@ -10,6 +10,8 @@
 #import <UIKit/UIKit.h>
 
 
+
+
 #define SH_HOST  @"http://192.168.1.1"
 
 
@@ -33,6 +35,9 @@ typedef void (^FailedBlock)(NSError *error);
 + (RequestManager*)sharedManager;
 
 
+
+//测网速
++(BOOL)isNetWorking;
 
 //测试
 + (void)TestWithUrl:(NSString *)testUrl

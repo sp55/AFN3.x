@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "RealReachability.h"
 @interface AppDelegate ()
 
 @end
@@ -16,7 +16,11 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    [GLobalRealReachability startNotifier];//网络监控
+
+    
+    
     return YES;
 }
 

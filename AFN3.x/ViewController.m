@@ -22,11 +22,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    [RequestManager TestWithUrl:kTestUrl success:^(id resultData) {
-        NSLog(@"result->%@",resultData);
-    } failed:^(NSError *error) {
-        NSLog(@"error-->%@",error);
-    }];
+    
+    if ([RequestManager isNetWorking]) {
+        
+        [RequestManager TestWithUrl:kTestUrl success:^(id resultData) {
+            NSLog(@"result->%@",resultData);
+        } failed:^(NSError *error) {
+            NSLog(@"error-->%@",error);
+        }];
+    }else{
+        NSLog(@"没网");
+    }
+    
+   
     
     
     

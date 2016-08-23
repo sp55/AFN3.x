@@ -8,6 +8,8 @@
 
 #import "RequestManager.h"
 #import "AFNetworking.h"
+#import "RealReachability.h"
+
 
 @implementation RequestManager
 
@@ -85,6 +87,33 @@
             failure(error);
         }
     }];
+}
+
+
++(BOOL)isNetWorking
+{
+    ReachabilityStatus status = [GLobalRealReachability currentReachabilityStatus];
+    if (status == RealStatusNotReachable)
+    {
+        NSLog(@"没有网");
+        return NO;
+    }
+    
+    if (status == RealStatusViaWiFi)
+    {
+        NSLog(@"有WiFi");
+        
+        return YES;
+    }
+    
+    if (status == RealStatusViaWWAN)
+    {
+        NSLog(@"有WLAN");
+        
+        return YES;
+    }
+    return NO;
+    
 }
 
 //测试
